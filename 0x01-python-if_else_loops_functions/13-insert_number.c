@@ -15,6 +15,8 @@ listint_t *insert_node(listint_t **head, int number)
 	listint_t *current;
 
 	new_node = malloc(sizeof(listint_t));
+	if (new_node == NULL)
+		return (NULL)
 	new_node->number = number;
 	new_node->next = NULL;
 
@@ -22,14 +24,14 @@ listint_t *insert_node(listint_t **head, int number)
 	 * if the list is empty or the new value should
 	 * be inserted at the beginning
 	 */
-	if (head == NULL || (*head)->value > value)
+	if (head == NULL || (*head)->number > number)
 	{
 		new_node->next = *head;
 		*head = new_node;
 	}
 	/** Find the correct position to insert the new node */
 	current = *head;
-	while (current->next != NULL && current->next->value < value)
+	while (current->next != NULL && current->next->number < number)
 		current = current->next;
 
 	/** insert the node */
