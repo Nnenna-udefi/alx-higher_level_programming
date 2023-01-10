@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 void reverse_listint(listint_t **head);
+
 /**
  * reverse_listint - reverses a linked list
  * @head: pointer to the first node in the list
