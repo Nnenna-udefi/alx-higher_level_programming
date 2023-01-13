@@ -5,6 +5,6 @@ def update_dictionary(a_dictionary, key, value):
         a_dictionary[key] = value
     else:
         for i in a_dictionary:
-            i == key
-            a_dictionary[i] = value
+            if i == key:
+                a_dictionary[i] = value
     return a_dictionary
