@@ -17,5 +17,5 @@ def roman_to_int(roman_string):
          if i > 0 and roman_i[roman_string[i]] > roman_i[roman_string[i - 1]]:
             inte += roman_i[roman_string[i]] - 2 * roman_i[roman_string[i - 1]]
          else:
-             inte += roman_to_int[roman_string[i]]
+             inte += roman_i[roman_string[i]]
     return inte
