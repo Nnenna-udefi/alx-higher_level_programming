@@ -1,0 +1,106 @@
+
+===========================
+
+How to Use 0-add_integer.py
+
+==========================
+
+Import function from module:
+
+	>>> add_integer = __import__('0-add_integer').add_integer
+
+Test positive integers:
+	>>> add_integer(3, 5)
+	8
+
+Test negative and positive integes:
+	>>> add_integer(3, -5)
+	-2
+
+Test float integers:
+	>>> add_integer(3.0, 5.1)
+	8
+
+Test flaot and non floats:
+	>>> add_integer(2.8, -6)
+	-4
+
+	>>> add_integer(-2.8, -6.1)
+	-8
+
+Test one int argument:
+	>>> add_integer(4)
+	102
+
+by default, the second argument is 98
+
+	>>> add_integer(0)
+	98
+
+Non-Numbers
+===========
+
+``add_integer()`` expects that both arguments are either integers or floats.
+If either argument is a non-integer and non-float, a TypeError is raised:
+
+::
+
+    >>> add_integer("hello", 3)
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+::
+
+    >>> add_integer(2, "hello")
+    Traceback (most recent call last):
+    TypeError: b must be an integer
+
+::
+
+    >>> add_integer(None)
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+::
+
+    >>> add_integer(2.3, None)
+    Traceback (most recent call last):
+    TypeError: b must be an integer
+
+If both arguments are non-integers and non-floats, a TypeError message is only
+printed for the first argument.
+
+::
+
+    >>> add_integer("hello", "there")
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+The function will fail if infinity is provided.
+
+::
+
+    >>> add_integer(float('inf'))
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+     
+
+::
+
+    >>> add_integer(2, float('inf'))
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+
+And again with NaN numbers.
+
+::
+
+    >>> add_integer(float('nan'))
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer
+
+::
+
+    >>> add_integer(2, float('nan'))
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer
