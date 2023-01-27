@@ -11,11 +11,11 @@ def text_indentation(text):
     Args:
     text(sting)
     """
-    if type(text) not in str:
+    if not isinstance(text, str):
         raise TypeError("text must be a string")
 
     words = 0
-    while word < len(text) and text[words] == ' ':
+    while words < len(text) and text[words] == ' ':
         words += 1
 
     while words < len(text):
@@ -26,7 +26,5 @@ def text_indentation(text):
             words += 1
             while words < len(text) and text[words] == ' ':
                 words += 1
-                continue
+            continue
         words += 1
-
-
