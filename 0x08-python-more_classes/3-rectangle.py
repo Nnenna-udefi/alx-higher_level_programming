@@ -3,7 +3,7 @@
 
 
 class Rectangle:
-    """Represent a rectangle."""
+    """Represent a rectangle"""
 
     def __init__(self, width=0, height=0):
         """Initialize a new Rectangle.
@@ -41,10 +41,25 @@ class Rectangle:
         self.__height = value
 
     def area(self):
+        """Return the area of the rectangle"""
         return (self.__width * self.__height)
 
     def perimeter(self):
+        """Return the perimeter of the rectangle"""
         if self.__width == 0 or self.__height == 0:
             return 0
         peri = self.__width + self.__height
         return 2 * peri
+
+    def __str__(self):
+        """Return the printable representation of the Rectangle
+        and prints the character # to represent the rectangle
+        """
+        if self.__width == 0 or self.__height == 0:
+            return ("")
+        rec = []
+        for x in range(self.__height):
+            [rec.append('#') for i in range(self.__width)]
+            if x != self.__height - 1:
+                rec.append("\n")
+        return("".join(rec))
