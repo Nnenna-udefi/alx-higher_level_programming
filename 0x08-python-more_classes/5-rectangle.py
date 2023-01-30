@@ -3,8 +3,7 @@
 
 
 class Rectangle:
-    """Represents a rectangle"""
-
+    """Represent a rectangle"""
     def __init__(self, width=0, height=0):
         """Initialize a new Rectangle.
         Args:
@@ -64,7 +63,11 @@ class Rectangle:
         return ("".join(rect))
 
     def __repr__(self):
-        """Return the string representation of the Rectangle"""
+        """Return the string representation of the Rectangle."""
         rect = "Rectangle(" + str(self.__width)
         rect += ", " + str(self.__height) + ")"
         return (rect)
+
+    def __del__(self):
+        """deletes  rectangle and print a message"""
+        print("Bye rectangle...")
