@@ -23,7 +23,7 @@ class MaxIntegerTest(unittest.TestCase):
         empty = []
         self.assertEqual(max_integer(empty), None)
 
-    def max_at_start_test(self):
+    def max_at_the_beginning(self):
         """Test a list of max integer at the beggining"""
         mx = [4, 3, 2, 1]
         self.assertEqual(max_integer(mx), 4)

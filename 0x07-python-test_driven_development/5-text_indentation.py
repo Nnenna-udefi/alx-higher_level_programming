@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines a text indentation function"""
 
+
 def text_indentation(text):
     """Prints a text with 2 new lines after each of these : ., ? and :
     with no space at the beginning or at the end of each printed line
@@ -11,6 +12,7 @@ def text_indentation(text):
     Args:
     text(sting)
     """
+
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
