@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines a class Base."""
 import json
+import csv
 
 
 class Base:
@@ -117,13 +118,13 @@ class Base:
             with open(filename, "r", newline="") as csvfile:
                 if cls.__name == 'Square':
                     fieldnames = ["id", "size", "x", "y"]
-                else:
+                elif cls.__name__ == 'Rectangle':
                     fieldnames = ["id", "width", "height", "x", "y"]
                 reader = csv.DictReader(csvfile, fieldnames=fieldnames)
+                next(reader)
                 for row in reader:
-                    obj = cls.(*row)
+                    obj = cls.create(**row)
                     objs.append(obj)
-                return objs
+            return objs
         except:
             return []
-
