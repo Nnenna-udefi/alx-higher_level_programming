@@ -2,6 +2,7 @@
 """Defines a class Base."""
 import json
 import csv
+import turtle
 
 
 class Base:
@@ -12,6 +13,7 @@ class Base:
     """
 
     __nb_objects = 0
+
     def __init__(self, id=None):
         """Initializes the base
         Args:
@@ -84,7 +86,7 @@ class Base:
                 for dictionary in list_dictionaries:
                     list_objs.append(cls.create(**dictionary))
                 return list_objs
-        except:
+        except IOError:
             return []
 
     @classmethod
@@ -101,10 +103,10 @@ class Base:
             if list_objs is None or len(list_objs) == 0:
                 csvfile.write("[]")
             else:
-                if cls.__name__ == "Square":
-                    fieldnames = ["id", "size", "x", "y"]
-                else:
+                if cls.__name__ == "Rectangle":
                     fieldnames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
                 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
                 for obj in list_objs:
                     writer.writerow(obj.to_dictionary())
@@ -113,18 +115,61 @@ class Base:
     def load_from_file_csv(cls):
         """Deserialize a list of objects from a CSV file"""
         filename = cls.__name__ + ".csv"
-        objs = []
         try:
             with open(filename, "r", newline="") as csvfile:
-                if cls.__name == 'Square':
-                    fieldnames = ["id", "size", "x", "y"]
-                elif cls.__name__ == 'Rectangle':
+                if cls.__name__ == "Rectangle":
                     fieldnames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
                 reader = csv.DictReader(csvfile, fieldnames=fieldnames)
-                next(reader)
-                for row in reader:
-                    obj = cls.create(**row)
-                    objs.append(obj)
-            return objs
-        except:
+                reader = [dict([k, int(v)] for k, v in row.items())
+                          for row in reader]
+                return [cls.create(**row) for row in reader]
+        except IOError:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Turtle graphic module that opens a window
+            and draws all the Rectangles and Squares
+        Args:
+            list_rectangles (list): A list of Rectangle objects to draw.
+            list_squares (list): A list of Square objects to draw.
+        """
+        turtle.title("Drawing Rectangles and Squares")
+        # window = turtle.Screen()
+        # window.bgcolor("#20348c")
+
+        turt = turtle.Turtle()
+        turt.screen.bgcolor("20348c")
+
+        turt.pensize(4)
+        turt.speed(10)
+        turt.pencolor("#000000")
+
+        turt.color("#ffffff")
+        for rect in list_rectangles:
+            turt.penup()
+            turt.goto(rect.x, rect.y)
+            turt.pendown()
+            turt.forward(rect.width)
+            turt.right(90)
+            turt.forward(rect.height)
+            turt.right(90)
+            turt.forward(rect.width)
+            turt.right(90)
+            turt.forward(rect.height)
+
+        for sq in list_squares:
+            turt.penup()
+            turt.goto(sq.x, sq.y)
+            turt.pendown()
+            turt.forward(sq.size)
+            turt.right(90)
+            turt.forward(sq.size)
+            turt.right(90)
+            turt.forward(sq.size)
+            turt.right(90)
+            turt.forward(sq.size)
+
+        turtle.exitonclick()

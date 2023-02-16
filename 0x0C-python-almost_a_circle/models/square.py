@@ -26,7 +26,7 @@ class Square(Rectangle):
     def size(self, value):
         self.width = value
         self.height = value
-        
+
     def __str__(self):
         """Update the class Rectangle by overriding the __str__ method"""
         return "[Square] ({}) {}/{} - {}".format(
