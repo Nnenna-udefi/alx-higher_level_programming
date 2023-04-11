@@ -8,4 +8,3 @@ function add (a, b) {
 }
 
 console.log(add(arg1, arg2));
-
