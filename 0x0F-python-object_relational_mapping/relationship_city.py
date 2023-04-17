@@ -4,6 +4,7 @@ from sqlalchemy import Integer, Column, String, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from relationship_state import Base
 
+
 class City(Base):
     """Represents a city class that inherits a declarative base" from states"""
 
