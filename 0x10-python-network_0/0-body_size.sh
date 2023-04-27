@@ -4,4 +4,4 @@
 # -s option tells curl to operate in silent mode
 
 url="$1"
-curl -s "$url" | wc -c
+curl -s '%{size_download}' "$url" | wc -c
