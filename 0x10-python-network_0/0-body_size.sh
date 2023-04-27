@@ -4,4 +4,4 @@
 # -s option tells curl to operate in silent mode
 
 url="$1"
-curl -s -w "$url" 
+curl -s "$url" | wc -c
