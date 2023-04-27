@@ -4,4 +4,4 @@
 # -o option specifies the output file.
 # -w option specifies the format for the output
 # -s option suppresses the progress meter and other non-error messages
-curl -s -o /tmp/response.headers -w "%{http_code}" "$1" >/dev/null
+curl "$1" -w "%{http_code}" -so /dev/null
