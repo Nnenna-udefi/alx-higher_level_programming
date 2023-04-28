@@ -13,7 +13,7 @@ if __name__ == '__main__':
     username = sys.argv[1]
     password = sys.argv[2]
 
-    r = requests.get(url, auth=(HTTPBasicAuth('username', 'password')))
+    r = requests.get(url, auth=HTTPBasicAuth('username', 'password'))
     if r.status_code == 200:
         res_json = r.json()
         print(res_json.get("id"))
